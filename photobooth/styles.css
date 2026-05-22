@@ -699,25 +699,29 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Mobile: keep the polaroid mockup, just make sure it fits.
+   Mobile: keep the polaroid mockup, but make it fill the screen.
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .stage {
-    /* less padding so the device gets more room on small screens */
-    padding: 12px 8px;
-    /* center the device with the caption tucked above */
-    align-items: center;
+    /* Stack caption above device (default is row, which squishes the device) */
+    flex-direction: column;
+    padding: 8px 6px;
+    gap: 8px;
+    justify-content: center;
   }
   .stage__caption {
+    /* take it out of fixed top-left and let it sit above the device */
     position: static;
-    margin-bottom: 8px;
+    margin: 0;
     font-size: 11px;
+    align-self: center;
   }
 
-  /* Make sure the device fits inside the viewport height too,
-     so nothing gets cut off at the bottom on a portrait phone. */
+  /* Make the device as big as the screen allows, fitting both width and height.
+     !important needed to override the inline style set by app.jsx. */
   .device-stage {
-    width: min(820px, 96vw, calc((100dvh - 60px) * 744 / 651));
+    width: min(99vw, calc((100dvh - 80px) * 744 / 651)) !important;
+    margin: 0 auto;
   }
 
   /* Hide the desktop-only Tweaks panel on phones */
