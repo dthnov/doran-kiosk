@@ -723,90 +723,90 @@ html, body {
 
   .twk-panel { display: none !important; }
 
-  /* ── Scale down content INSIDE the L-cutout so it actually fits ── */
-  .screen { padding: 4px 5px; font-size: 7px; line-height: 1.25; }
-  .mascot { width: 22px !important; height: 22px !important; }
+  /* ── Scale down content INSIDE the L-cutout so it actually fits ──
+     One more pass: shrink everything proportionally so user bubbles
+     can stay right-aligned without hitting the L-notch.            */
+  .screen { padding: 3px 4px; font-size: 5.5px; line-height: 1.25; }
+  .mascot { width: 16px !important; height: 16px !important; }
 
-  .bubble { font-size: 6.5px; padding: 3px 6px; max-width: 88%; }
-  .bubble--soft { font-size: 6px; padding: 3px 5px; }
+  .bubble { font-size: 5px; padding: 2px 5px; max-width: 80%; }
+  .bubble--soft { font-size: 4.5px; padding: 2px 4px; }
 
   /* Intro: stack buttons vertically (so they don't hit the L-notch) */
-  .screen--intro { padding-top: 6px; }
+  .screen--intro { padding-top: 4px; }
   .screen--intro .mascot { margin-bottom: 2px; }
   .screen--intro .bubble { margin-top: 2px; }
-  .intro__hint { font-size: 5.5px; margin: 2px 0; }
+  .intro__hint { font-size: 4px; margin: 2px 0; }
   .intro__cta {
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
     align-self: flex-start;
-    margin-top: 4px;
-    max-width: 55%; /* keep entirely inside L (clear of bottom-right notch) */
+    margin-top: 3px;
+    max-width: 55%;
   }
-  .pill { font-size: 6.5px; padding: 3px 7px; gap: 2px; min-height: 0; }
-  .pill .material-symbols-rounded { font-size: 9px !important; }
+  .pill { font-size: 5px; padding: 2px 5px; gap: 2px; min-height: 0; }
+  .pill .material-symbols-rounded { font-size: 7px !important; }
 
   /* header */
-  .head { gap: 3px; margin-bottom: 2px; }
-  .head__title { font-size: 6.5px; }
-  .head__back { width: 14px; height: 14px; }
-  .head__back .material-symbols-rounded { font-size: 9px !important; }
-  .head__progress { font-size: 5.5px; }
+  .head { gap: 2px; margin-bottom: 2px; }
+  .head__title { font-size: 5px; }
+  .head__back { width: 11px; height: 11px; }
+  .head__back .material-symbols-rounded { font-size: 7px !important; }
+  .head__progress { font-size: 4px; }
 
   /* mode cards */
-  .modes__list { gap: 3px !important; }
-  .mode-card { padding: 4px 5px; gap: 4px; }
-  .mode-card__title { font-size: 7px; }
-  .mode-card__desc { font-size: 5.5px; }
-  .mode-card__icon { width: 16px; height: 16px; }
-  .mode-card__icon .material-symbols-rounded { font-size: 10px !important; }
+  .modes__list { gap: 2px !important; }
+  .mode-card { padding: 3px 4px; gap: 3px; }
+  .mode-card__title { font-size: 5.5px; }
+  .mode-card__desc { font-size: 4.5px; }
+  .mode-card__icon { width: 13px; height: 13px; }
+  .mode-card__icon .material-symbols-rounded { font-size: 8px !important; }
 
   /* camera */
-  .cam-prompt { left: 4px; right: 4px; top: 4px; gap: 3px; }
-  .cam-prompt .bubble { font-size: 6px; padding: 3px 5px; }
-  .cam-prompt .mascot { width: 16px !important; height: 16px !important; }
-  .cam-back { top: 4px; right: 4px; }
-  .cam-shutter { left: 5px; bottom: 5px; gap: 3px; }
-  .cam-shutter__btn { width: 24px; height: 24px; border-width: 2px; }
-  .cam-shutter__btn .material-symbols-rounded { font-size: 12px !important; }
-  .cam-shutter__hint { font-size: 5px; line-height: 1.1; }
-  .countdown__num { font-size: 28px !important; }
+  .cam-prompt { left: 3px; right: 3px; top: 3px; gap: 2px; }
+  .cam-prompt .bubble { font-size: 4.5px; padding: 2px 4px; }
+  .cam-prompt .mascot { width: 13px !important; height: 13px !important; }
+  .cam-back { top: 3px; right: 3px; }
+  .cam-shutter { left: 4px; bottom: 4px; gap: 2px; }
+  .cam-shutter__btn { width: 20px; height: 20px; border-width: 2px; }
+  .cam-shutter__btn .material-symbols-rounded { font-size: 10px !important; }
+  .cam-shutter__hint { font-size: 4px; line-height: 1.1; }
+  .countdown__num { font-size: 22px !important; }
 
   /* recall */
-  .recall__q { font-size: 7px; }
-  .recall__hint { font-size: 5.5px; }
-  .choice { font-size: 6px; padding: 3px 5px; min-height: 0; }
-  .recall__feedback { font-size: 6.5px; gap: 3px; }
-  .recall__feedback .material-symbols-rounded { font-size: 9px !important; }
+  .recall__q { font-size: 5.5px; }
+  .recall__hint { font-size: 4.5px; }
+  .choice { font-size: 5px; padding: 2px 4px; min-height: 0; }
+  .recall__feedback { font-size: 5px; gap: 2px; }
+  .recall__feedback .material-symbols-rounded { font-size: 7px !important; }
 
   /* saved */
-  .polaroid__cap { font-size: 6px; }
-  .saved__msg { font-size: 7.5px; }
-  .saved__sub { font-size: 5.5px; }
-  .saved__actions { gap: 3px; flex-direction: column; max-width: 55%; }
+  .polaroid__cap { font-size: 5px; }
+  .saved__msg { font-size: 6px; }
+  .saved__sub { font-size: 4.5px; }
+  .saved__actions { gap: 2px; flex-direction: column; max-width: 55%; }
 
-  /* chat */
-  .screen--chat { gap: 3px; padding-bottom: 4px; }
-  .chat__log { width: 58%; padding-right: 2px; }
-  .chat-row .mascot { width: 12px !important; height: 12px !important; }
-  .chat-row { gap: 3px; }
-  /* IMPORTANT: keep user bubbles on the LEFT on mobile too — right side
-     hits the L-cutout notch and gets clipped. */
-  .chat-row--user { justify-content: flex-start; }
-  .chat-bubble { font-size: 6.5px; padding: 3px 5px; max-width: 92%; border-radius: 7px; }
-  .chat-bubble--user {
-    border-bottom-right-radius: 7px;
-    border-bottom-left-radius: 3px;
+  /* chat — keep user bubbles right-aligned, just small enough to fit */
+  .screen--chat { gap: 2px; padding-bottom: 3px; }
+  .chat__log {
+    width: 95%;
+    padding-right: 2px;
+    /* Keep the log above the L-notch (notch starts at ~69% height). */
+    max-height: 60%;
   }
+  .chat-row .mascot { width: 10px !important; height: 10px !important; }
+  .chat-row { gap: 2px; }
+  .chat-bubble { font-size: 5px; padding: 2px 4px; max-width: 55%; border-radius: 5px; }
   .chat-bubble--thinking i { width: 2px; height: 2px; }
-  .chat__seed { font-size: 6px; padding: 2px 5px; }
-  .chat__seeds { gap: 2px; flex-direction: column; align-items: flex-start; }
-  .chat__voice-hint { font-size: 6px; padding: 2px 5px; gap: 3px; width: 58%; }
+  .chat__seed { font-size: 4.5px; padding: 2px 4px; }
+  .chat__seeds { gap: 2px; flex-direction: column; align-items: flex-start; width: 58%; }
+  .chat__voice-hint { font-size: 5px; padding: 2px 4px; gap: 2px; width: 58%; }
   .chat__voice-dot { width: 3px; height: 3px; }
-  .chat__compose { padding: 2px 2px 2px 6px; gap: 3px; width: 58%; }
-  .chat__input { font-size: 6.5px; }
-  .chat__mic { width: 14px; height: 14px; }
-  .chat__mic .material-symbols-rounded { font-size: 9px !important; }
-  .chat__send { width: 14px; height: 14px; }
-  .chat__send .material-symbols-rounded { font-size: 9px !important; }
+  .chat__compose { padding: 2px 2px 2px 5px; gap: 2px; width: 58%; }
+  .chat__input { font-size: 5px; }
+  .chat__mic { width: 11px; height: 11px; }
+  .chat__mic .material-symbols-rounded { font-size: 7px !important; }
+  .chat__send { width: 11px; height: 11px; }
+  .chat__send .material-symbols-rounded { font-size: 7px !important; }
 }
 
