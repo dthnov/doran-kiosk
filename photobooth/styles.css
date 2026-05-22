@@ -733,7 +733,7 @@ html, body {
   .bubble--soft { font-size: 4.5px; padding: 2px 4px; }
 
   /* Intro: stack buttons vertically (so they don't hit the L-notch) */
-  .screen--intro { padding-top: 4px; }
+  .screen--intro { padding: 4px 4px 3px; height: 100%; }
   .screen--intro .mascot { margin-bottom: 2px; }
   .screen--intro .bubble { margin-top: 2px; }
   .intro__hint { font-size: 4px; margin: 2px 0; }
@@ -741,7 +741,8 @@ html, body {
     flex-direction: column;
     gap: 2px;
     align-self: flex-start;
-    margin-top: 3px;
+    margin-top: auto;   /* push all the way to the bottom of the L-shape */
+    margin-bottom: 0;
     max-width: 55%;
   }
   .pill { font-size: 5px; padding: 2px 5px; gap: 2px; min-height: 0; }
@@ -786,13 +787,12 @@ html, body {
   .saved__sub { font-size: 4.5px; }
   .saved__actions { gap: 2px; flex-direction: column; max-width: 55%; }
 
-  /* chat — keep user bubbles right-aligned, just small enough to fit */
+  /* chat — keep user bubbles right-aligned, just small enough to fit.
+     No max-height so the log fills all the way down and scrolls to bottom. */
   .screen--chat { gap: 2px; padding-bottom: 3px; }
   .chat__log {
     width: 95%;
     padding-right: 2px;
-    /* Keep the log above the L-notch (notch starts at ~69% height). */
-    max-height: 60%;
   }
   .chat-row .mascot { width: 10px !important; height: 10px !important; }
   .chat-row { gap: 2px; }
