@@ -727,7 +727,8 @@ html, body {
      One more pass: shrink everything proportionally so user bubbles
      can stay right-aligned without hitting the L-notch.            */
   .screen { padding: 3px 4px; font-size: 5.5px; line-height: 1.25; }
-  .mascot { width: 16px !important; height: 16px !important; }
+  /* mascot bumped 50% bigger per request */
+  .mascot { width: 24px !important; height: 24px !important; }
 
   .bubble { font-size: 5px; padding: 2px 5px; max-width: 80%; }
   .bubble--soft { font-size: 4.5px; padding: 2px 4px; }
@@ -753,7 +754,9 @@ html, body {
   .head__title { font-size: 5px; }
   .head__back { width: 11px; height: 11px; }
   .head__back .material-symbols-rounded { font-size: 7px !important; }
-  .head__progress { font-size: 4px; }
+  /* progress label ("도란과 함께" etc.) is decorative and gets clipped
+     at this size — just hide it on mobile. */
+  .head__progress { display: none; }
 
   /* mode cards */
   .modes__list { gap: 2px !important; }
@@ -766,7 +769,7 @@ html, body {
   /* camera */
   .cam-prompt { left: 3px; right: 3px; top: 3px; gap: 2px; }
   .cam-prompt .bubble { font-size: 4.5px; padding: 2px 4px; }
-  .cam-prompt .mascot { width: 13px !important; height: 13px !important; }
+  .cam-prompt .mascot { width: 20px !important; height: 20px !important; }
   .cam-back { top: 3px; right: 3px; }
   .cam-shutter { left: 4px; bottom: 4px; gap: 2px; }
   .cam-shutter__btn { width: 20px; height: 20px; border-width: 2px; }
@@ -794,7 +797,7 @@ html, body {
     width: 95%;
     padding-right: 2px;
   }
-  .chat-row .mascot { width: 10px !important; height: 10px !important; }
+  .chat-row .mascot { width: 15px !important; height: 15px !important; }
   .chat-row { gap: 2px; }
   .chat-bubble { font-size: 5px; padding: 2px 4px; max-width: 55%; border-radius: 5px; }
   .chat-bubble--thinking i { width: 2px; height: 2px; }
