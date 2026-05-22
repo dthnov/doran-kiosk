@@ -785,14 +785,15 @@ html, body {
   .cam-shutter__hint { font-size: 4px; line-height: 1.1; }
   .countdown__num { font-size: 22px !important; }
 
-  /* recall — stack photo on top, text below; fit inside L-cutout */
+  /* recall — stack photo on top, text below; choices vertically to stay
+     inside the L-cutout (avoid bottom-right notch). */
   .screen--recall {
     grid-template-columns: 1fr !important;
     gap: 3px;
     padding-top: 3px;
   }
   .recall__photo {
-    width: 38px;
+    width: 32px;
     margin: 0 auto;
     border-width: 1px;
     border-radius: 4px;
@@ -807,25 +808,36 @@ html, body {
   .recall__q { font-size: 5.5px; line-height: 1.2; }
   .recall__hint { font-size: 4.5px; }
   .recall__choices {
-    /* 2 columns so all 4 emotions are visible at once */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Single column, 55% wide → all options visible, none clipped by L-notch */
+    display: flex;
+    flex-direction: column;
     gap: 2px;
-    max-width: 95%;
+    max-width: 55%;
   }
   .choice {
     font-size: 5px;
-    padding: 2px 3px;
+    padding: 2px 5px;
     min-height: 0;
     border-radius: 4px;
-    text-align: center;
+    text-align: left;
   }
-  .recall__feedback { font-size: 5px; gap: 2px; }
+  .recall__feedback { font-size: 5px; gap: 2px; max-width: 55%; }
   .recall__feedback .material-symbols-rounded { font-size: 7px !important; }
 
-  /* saved */
-  .polaroid__cap { font-size: 5px; }
-  .saved__msg { font-size: 6px; }
+  /* saved — shrink polaroid so message + buttons are visible */
+  .screen--saved { padding-top: 4px; }
+  .polaroid {
+    padding: 3px 3px 8px 3px;
+    margin-bottom: 3px;
+    transform: rotate(-2deg);
+  }
+  .polaroid img {
+    width: 48px;
+    height: 48px;
+    border-radius: 1px;
+  }
+  .polaroid__cap { font-size: 4.5px; margin-top: 2px; }
+  .saved__msg { font-size: 6.5px; margin: 2px 0 1px; }
   .saved__sub { font-size: 4.5px; }
   .saved__actions { gap: 2px; flex-direction: column; max-width: 55%; }
 
