@@ -1,0 +1,20 @@
+{
+  "name": "doran-kiosk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "도란 — 치매예방 AI 기억회상 포토키오스크",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "multer": "^2.0.1",
+    "openai": "^4.77.0"
+  }
+}

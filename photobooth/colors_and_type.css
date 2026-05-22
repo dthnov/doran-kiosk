@@ -1,0 +1,231 @@
+/* ──────────────────────────────────────────────────────────────────
+   Doran Design System — Foundations
+   A warm, wooden, conversational aesthetic for senior + dementia
+   companion products. Caramel, cream, walnut. Paperlogy + Gorditas.
+   ────────────────────────────────────────────────────────────────── */
+
+/* ───── Webfonts ──────────────────────────────────────────────── */
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Paperlogy-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Paperlogy-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Paperlogy-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Paperlogy-SemiBold.ttf") format("truetype");
+}
+
+/* Gorditas appears in Figma frames (display label face). Pulled from
+   Google Fonts as a CDN fallback for English/numerals. */
+@import url("https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap");
+
+:root {
+  /* ───── Brand palette (caramel + cream) ─────────────────────── */
+
+  /* Cream / canvas — the screen-glow color */
+  --cream-50:  #FFF8F0;   /* rgb(255,248,240) — softest paper */
+  --cream-100: #FFF8F1;   /* rgb(255,248,241) — sheet behind UI */
+  --cream-200: #FFEEDE;   /* rgb(255,238,222) — primary canvas */
+  --cream-300: #F0D6B3;   /* rgb(240,214,179) — sand / divider */
+
+  /* Caramel — the brand accent */
+  --caramel-300: #DBA988; /* rgb(219,169,136) — soft caramel hover */
+  --caramel-400: #D49972; /* rgb(212,153,114) — caramel mid */
+  --caramel-500: #B9794B; /* rgb(185,121,75)  — caramel — PRIMARY */
+  --caramel-600: #82664A; /* rgb(130,102,74)  — toasted bronze */
+  --caramel-700: #664424; /* rgb(102,68,36)   — walnut / TEXT-1 */
+
+  /* Walnut — the wooden chassis */
+  --walnut-500: #8B5E34;
+  --walnut-700: #5C3A1E;
+  --walnut-900: #2A1A0B;
+
+  /* Surface (translucent overlays for the screen panel) */
+  --surface-glass-strong: rgba(255, 248, 241, 0.92);
+  --surface-glass:        rgba(255, 248, 241, 0.58);
+  --surface-glass-soft:   rgba(255, 248, 241, 0.20);
+
+  /* Pure */
+  --white: #FFFFFF;
+  --black: #000000;
+
+  /* Semantic — foreground */
+  --fg-1: var(--caramel-700);   /* primary copy */
+  --fg-2: var(--caramel-600);   /* secondary copy / icon */
+  --fg-3: var(--caramel-500);   /* accent text, "listening" labels */
+  --fg-on-caramel: var(--cream-100);
+
+  /* Semantic — background */
+  --bg-canvas:   var(--cream-200);  /* the warm screen field */
+  --bg-surface:  var(--cream-100);  /* card / chip surface */
+  --bg-elevated: var(--white);
+  --bg-shell:    var(--walnut-700); /* device chassis */
+  --bg-stage:    #1B1410;           /* photographic black behind device */
+
+  /* Semantic — accent */
+  --accent: var(--caramel-500);
+  --accent-soft: var(--caramel-300);
+  --accent-deep: var(--caramel-700);
+
+  /* Semantic — borders */
+  --border-soft: rgba(102, 68, 36, 0.10);
+  --border:      rgba(102, 68, 36, 0.18);
+  --border-hard: rgba(102, 68, 36, 0.32);
+
+  /* Status (designed to feel at-home in the warm palette) */
+  --ok:    #6E8C4E;   /* sage — gentle reassurance */
+  --warn:  #C98A3D;   /* amber */
+  --error: #B5503A;   /* warm clay-red, never harsh */
+
+  /* ───── Type ──────────────────────────────────────────────────── */
+  --font-display: "Gorditas", "Paperlogy", system-ui, sans-serif;
+  --font-sans:    "Paperlogy", -apple-system, "Apple SD Gothic Neo",
+                  "Noto Sans KR", system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Type scale — generous, senior-friendly. Min body 18px. */
+  --fs-xs:   14px;   /* captions only — never primary copy */
+  --fs-sm:   18px;   /* secondary body, labels */
+  --fs-base: 22px;   /* DEFAULT body — large by design */
+  --fs-md:   26px;   /* lead paragraph */
+  --fs-lg:   32px;   /* H3 */
+  --fs-xl:   40px;   /* H2 */
+  --fs-2xl:  56px;   /* H1 */
+  --fs-3xl:  72px;   /* display */
+
+  --lh-tight:  1.15;
+  --lh-snug:   1.30;
+  --lh-normal: 1.50;
+  --lh-loose:  1.70;
+
+  --tracking-tight:  -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  /* ───── Spacing (4-step) ──────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  /* ───── Radii — pillows, never sharp ───────────────────────── */
+  --radius-xs:   8px;
+  --radius-sm:  12px;
+  --radius-md:  15px;   /* signature chip / card radius */
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-pill: 999px;
+
+  /* ───── Elevation — soft, single-layer, warm-tinted ────────── */
+  --shadow-1: 0 2px 9.9px 0 rgba(0, 0, 0, 0.10);
+  --shadow-2: 0 2px 9.9px 0 rgba(0, 0, 0, 0.25);    /* signature card shadow */
+  --shadow-3: 0 4px 4.6px -1px rgba(0, 0, 0, 0.25); /* mascot bubble */
+  --shadow-4: 0 12px 32px -8px rgba(58, 32, 12, 0.35);
+  --shadow-inset: inset 0 1px 2px rgba(255, 248, 240, 0.6),
+                  inset 0 -2px 4px rgba(102, 68, 36, 0.08);
+
+  /* ───── Motion ─────────────────────────────────────────────── */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-talk: cubic-bezier(0.34, 1.32, 0.64, 1); /* gentle bounce */
+  --dur-fast: 160ms;
+  --dur:      280ms;
+  --dur-slow: 480ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Semantic element styles
+   ───────────────────────────────────────────────────────────────── */
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+h2, .h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-tight);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+p, .p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+.lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  font-weight: 500;
+  color: var(--fg-1);
+}
+.caption {
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+}
+.eyebrow {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-3);
+  font-weight: 600;
+}
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-3xl);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
