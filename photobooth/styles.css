@@ -699,32 +699,93 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Mobile: keep the polaroid mockup, but make it fill the screen.
+   Mobile: keep the polaroid mockup, scale chassis & content to fit.
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .stage {
-    /* Stack caption above device (default is row, which squishes the device) */
     flex-direction: column;
     padding: 8px 6px;
     gap: 8px;
     justify-content: center;
   }
   .stage__caption {
-    /* take it out of fixed top-left and let it sit above the device */
     position: static;
     margin: 0;
     font-size: 11px;
     align-self: center;
   }
 
-  /* Make the device as big as the screen allows, fitting both width and height.
-     !important needed to override the inline style set by app.jsx. */
+  /* Make the device as big as the screen allows, fitting both width and height. */
   .device-stage {
     width: min(99vw, calc((100dvh - 80px) * 744 / 651)) !important;
     margin: 0 auto;
   }
 
-  /* Hide the desktop-only Tweaks panel on phones */
   .twk-panel { display: none !important; }
+
+  /* ── Scale down content INSIDE the L-cutout so it actually fits ── */
+  .screen { padding: 6px 8px; font-size: 9px; line-height: 1.3; }
+  .mascot { width: 32px !important; height: 32px !important; }
+
+  .bubble { font-size: 8.5px; padding: 5px 8px; }
+  .bubble--soft { font-size: 7.5px; padding: 4px 7px; }
+
+  .intro__hint { font-size: 7px; margin: 4px 0; }
+  .intro__cta { gap: 4px; margin-top: 4px; }
+  .pill { font-size: 8px; padding: 4px 8px; gap: 3px; }
+  .pill .material-symbols-rounded { font-size: 11px !important; }
+
+  /* header */
+  .head { gap: 4px; margin-bottom: 4px; }
+  .head__title { font-size: 8.5px; }
+  .head__back { width: 18px; height: 18px; }
+  .head__back .material-symbols-rounded { font-size: 12px !important; }
+  .head__progress { font-size: 7px; }
+
+  /* mode cards */
+  .mode-card { padding: 6px; gap: 6px; }
+  .mode-card__title { font-size: 8.5px; }
+  .mode-card__desc { font-size: 7px; }
+  .mode-card__icon { width: 22px; height: 22px; }
+  .mode-card__icon .material-symbols-rounded { font-size: 13px !important; }
+
+  /* camera */
+  .cam-prompt { left: 6px; right: 6px; top: 5px; gap: 5px; }
+  .cam-prompt .bubble { font-size: 7.5px; padding: 4px 7px; }
+  .cam-prompt .mascot { width: 22px !important; height: 22px !important; }
+  .cam-back { top: 5px; right: 5px; }
+  .cam-shutter { left: 6px; bottom: 6px; gap: 4px; }
+  .cam-shutter__btn { width: 30px; height: 30px; border-width: 2px; }
+  .cam-shutter__btn .material-symbols-rounded { font-size: 15px !important; }
+  .cam-shutter__hint { font-size: 6.5px; }
+  .countdown__num { font-size: 36px !important; }
+
+  /* recall */
+  .recall__photo { }
+  .recall__q { font-size: 9px; }
+  .recall__hint { font-size: 7px; }
+  .choice { font-size: 7.5px; padding: 4px 6px; }
+  .recall__feedback { font-size: 8px; }
+  .recall__feedback .material-symbols-rounded { font-size: 11px !important; }
+
+  /* saved */
+  .polaroid__cap { font-size: 7.5px; }
+  .saved__msg { font-size: 9px; }
+  .saved__sub { font-size: 7px; }
+
+  /* chat */
+  .chat-row .mascot { width: 16px !important; height: 16px !important; }
+  .chat-bubble { font-size: 8.5px; padding: 4px 7px; max-width: 60%; }
+  .chat-bubble--thinking i { width: 3px; height: 3px; }
+  .chat__seed { font-size: 7.5px; padding: 3px 6px; }
+  .chat__seeds { gap: 3px; }
+  .chat__voice-hint { font-size: 7.5px; padding: 3px 6px; gap: 4px; }
+  .chat__voice-dot { width: 4px; height: 4px; }
+  .chat__compose { padding: 2px 3px 2px 8px; gap: 4px; }
+  .chat__input { font-size: 8px; }
+  .chat__mic { width: 18px; height: 18px; }
+  .chat__mic .material-symbols-rounded { font-size: 11px !important; }
+  .chat__send { width: 18px; height: 18px; }
+  .chat__send .material-symbols-rounded { font-size: 11px !important; }
 }
 
