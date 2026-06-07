@@ -214,7 +214,9 @@ html, body {
 .intro__cta {
   margin-top: auto;
   align-self: flex-start;
-  display: flex; gap: 6px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  /* stay left of the L-cutout notch (notch starts ~60% width) */
+  max-width: 58%;
 }
 
 /* ─────────────────────────────────────────────────────────────
