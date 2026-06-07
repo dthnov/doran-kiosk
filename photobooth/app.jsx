@@ -1,7 +1,7 @@
 // Photobooth — main app + Tweaks panel.
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "name": "주혜",
+  "name": "두호",
   "showCameraNotch": true,
   "frameStyle": "polaroid",
   "deviceScale": 820

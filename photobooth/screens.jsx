@@ -45,7 +45,7 @@ function IntroScreen({ go, name }) {
       <Bubble style={{ marginTop: 10 }}>
         {name} 님, 추억 한 장<br/>함께 남겨볼까요?
       </Bubble>
-      <p className="intro__hint">기억력 쑥쑥 — 오늘의 포토부스</p>
+      <p className="intro__hint">우리 동네 어르신의 기억 친구</p>
       <div className="intro__cta">
         <Pill accent icon="photo_camera" onClick={() => go("modes")}>사진 찍기</Pill>
         <Pill icon="chat_bubble" onClick={() => go("chat")}>추억 대화</Pill>
