@@ -4,8 +4,30 @@ import multer from "multer";
 import OpenAI from "openai";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import fs from "node:fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/* ── Load Incheon welfare data so 도란 can answer about it ── */
+function buildIncheonReference() {
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, "photobooth", "incheon-data.json"), "utf-8");
+    const d = JSON.parse(raw);
+    const lines = ["[인천 노인복지 정보 — 어르신이 시설·정책을 물으면 아래에서 정확히 안내]"];
+    lines.push("상담전화: " + d.helplines.map((h) => `${h.name} ${h.tel}`).join(", "));
+    for (const g of d.districts) {
+      const c = g.dementiaCenter;
+      const w = g.seniorWelfare.map((f) => `${f.name}(${f.tel})`).join(", ");
+      lines.push(`${g.name}: 치매안심센터 ${c.name} ${c.tel} ${c.addr} / 노인복지관 ${w}`);
+    }
+    lines.push("복지정책: " + d.policies.map((p) => `${p.title}(대상 ${p.who})`).join(", "));
+    return lines.join("\n");
+  } catch (e) {
+    console.warn("[incheon] 데이터를 불러오지 못했어요:", e?.message ?? e);
+    return "";
+  }
+}
+const INCHEON_REFERENCE = buildIncheonReference();
 
 const {
   OPENAI_API_KEY,
@@ -40,7 +62,9 @@ const SYSTEM_PROMPT =
   "한 번에 한 가지 짧고 다정한 질문만 합니다(2~3문장, 50자 이내 권장). " +
   "어르신의 답변에서 구체적인 단어(장소·인물·음식·계절·감정)를 짚어 부드럽게 되물어 기억을 더 끌어냅니다. " +
   "절대 평가하거나 정정하지 않고, '잘 기억하고 계세요' 같은 격려를 자연스럽게 곁들입니다. " +
-  "이모지·영어·괄호 설명은 쓰지 않고, 마침표·쉼표만 사용하는 입말로 답합니다.";
+  "이모지·영어·괄호 설명은 쓰지 않고, 마침표·쉼표만 사용하는 입말로 답합니다. " +
+  "어르신이 치매안심센터·노인복지관·복지정책·전화번호 등 도움 정보를 물으면, 아래 인천 정보에서 정확한 곳과 번호를 한두 문장으로 짧고 또렷하게 알려드리고, '화면 아래 복지 도움 버튼을 누르시면 더 자세히 볼 수 있어요' 라고 덧붙입니다. 정보에 없는 내용은 지어내지 말고 120번이나 가까운 행정복지센터에 여쭤보시라고 안내합니다." +
+  (INCHEON_REFERENCE ? "\n\n" + INCHEON_REFERENCE : "");
 
 app.post("/api/chat", async (req, res) => {
   try {

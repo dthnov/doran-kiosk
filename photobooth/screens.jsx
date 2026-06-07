@@ -49,6 +49,7 @@ function IntroScreen({ go, name }) {
       <div className="intro__cta">
         <Pill accent icon="photo_camera" onClick={() => go("modes")}>사진 찍기</Pill>
         <Pill icon="chat_bubble" onClick={() => go("chat")}>추억 대화</Pill>
+        <Pill icon="volunteer_activism" onClick={() => go("welfare")}>복지 도움</Pill>
       </div>
     </div>
   );
@@ -533,4 +534,113 @@ function ChatScreen({ go, name }) {
   );
 }
 
-Object.assign(window, { MODES, SEED_PROMPTS, IntroScreen, ModesScreen, CameraScreen, RecallScreen, SavedScreen, ChatScreen });
+/* ─── Incheon welfare info ─────────────────────────────────── */
+function WelfareScreen({ go }) {
+  const [data, setData] = React.useState(null);
+  const [err, setErr] = React.useState(false);
+  const [tab, setTab] = React.useState("facility"); // facility | policy
+  const [districtId, setDistrictId] = React.useState(null);
+
+  React.useEffect(() => {
+    let on = true;
+    fetch("incheon-data.json")
+      .then((r) => r.json())
+      .then((d) => { if (on) { setData(d); setDistrictId(d.districts[0].id); } })
+      .catch(() => { if (on) setErr(true); });
+    return () => { on = false; };
+  }, []);
+
+  const tel = (n) => "tel:" + n.replace(/[^0-9]/g, "");
+  const district = data?.districts.find((d) => d.id === districtId) ?? null;
+
+  return (
+    <div className="screen screen--welfare fade-in">
+      <ScreenHead title="우리동네 복지 도움" onBack={() => go("intro")} />
+
+      <div className="welfare__tabs">
+        <button className={"welfare__tab" + (tab === "facility" ? " is-on" : "")}
+          onClick={() => setTab("facility")}>가까운 시설</button>
+        <button className={"welfare__tab" + (tab === "policy" ? " is-on" : "")}
+          onClick={() => setTab("policy")}>복지 정책</button>
+      </div>
+
+      {!data && !err && <div className="welfare__loading">정보를 불러오는 중…</div>}
+      {err && <div className="welfare__loading">정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.</div>}
+
+      {data && tab === "facility" && (
+        <div className="welfare__body">
+          <div className="welfare__chips">
+            {data.districts.map((d) => (
+              <button key={d.id}
+                className={"welfare__chip" + (d.id === districtId ? " is-on" : "")}
+                onClick={() => setDistrictId(d.id)}>{d.name}</button>
+            ))}
+          </div>
+
+          {district && (
+            <div className="welfare__cards">
+              <div className="welfare-card welfare-card--accent">
+                <div className="welfare-card__tag">
+                  <span className="material-symbols-rounded">neurology</span>치매안심센터
+                </div>
+                <div className="welfare-card__name">{district.dementiaCenter.name}</div>
+                <div className="welfare-card__addr">{district.dementiaCenter.addr}</div>
+                <a className="welfare-card__tel" href={tel(district.dementiaCenter.tel)}>
+                  <span className="material-symbols-rounded">call</span>{district.dementiaCenter.tel}
+                </a>
+              </div>
+
+              {district.seniorWelfare.map((f, i) => (
+                <div className="welfare-card" key={i}>
+                  <div className="welfare-card__tag">
+                    <span className="material-symbols-rounded">elderly</span>노인복지관
+                  </div>
+                  <div className="welfare-card__name">{f.name}</div>
+                  <div className="welfare-card__addr">{f.addr}</div>
+                  <a className="welfare-card__tel" href={tel(f.tel)}>
+                    <span className="material-symbols-rounded">call</span>{f.tel}
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="welfare__helplines">
+            {data.helplines.map((h, i) => (
+              <a className="welfare__helpline" key={i} href={tel(h.tel)}>
+                <span className="material-symbols-rounded">support_agent</span>
+                <span className="welfare__helpline-name">{h.name}</span>
+                <span className="welfare__helpline-tel">{h.tel}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {data && tab === "policy" && (
+        <div className="welfare__body">
+          <div className="welfare__policies">
+            {data.policies.map((p, i) => (
+              <div className="policy-card" key={i}>
+                <span className="policy-card__icon">
+                  <span className="material-symbols-rounded">{p.icon}</span>
+                </span>
+                <div className="policy-card__body">
+                  <div className="policy-card__title">{p.title}</div>
+                  <div className="policy-card__summary">{p.summary}</div>
+                  <div className="policy-card__meta"><b>대상</b> {p.who}</div>
+                  <div className="policy-card__meta"><b>신청</b> {p.how}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="welfare__note">
+            금액·기준은 매년 바뀔 수 있어요. 자세한 내용은 120(인천 다산콜)이나 가까운 행정복지센터·보건소에 확인해 주세요.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+Object.assign(window, { MODES, SEED_PROMPTS, IntroScreen, ModesScreen, CameraScreen, RecallScreen, SavedScreen, ChatScreen, WelfareScreen });

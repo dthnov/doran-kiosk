@@ -6,7 +6,11 @@
       "Bash(exit 0)",
       "Bash(OPENAI_API_KEY=sk-test PORT=3998 timeout 3 node server.js)",
       "Bash(git --version)",
-      "Bash(gh --version)"
+      "Bash(gh --version)",
+      "WebSearch",
+      "Bash(git add *)",
+      "Bash(git commit -m '인천 복지정보 기능 추가 \\(치매안심센터·노인복지관·정책 + AI 연동\\) *)",
+      "Bash(git push *)"
     ]
   }
 }

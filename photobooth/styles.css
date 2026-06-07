@@ -699,6 +699,139 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   Screen: Incheon welfare info
+   ───────────────────────────────────────────────────────────── */
+.screen--welfare {
+  display: flex; flex-direction: column;
+  padding: 10px 12px 8px;
+}
+.welfare__tabs {
+  display: flex; gap: 4px;
+  margin-bottom: 6px;
+  width: 58%; /* keep clear of the L-notch on the right */
+}
+.welfare__tab {
+  flex: 1;
+  border: none;
+  background: var(--surface-glass);
+  color: var(--fg-2);
+  font-family: inherit;
+  font-size: 9px; font-weight: 600;
+  padding: 4px 6px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 200ms, color 200ms;
+}
+.welfare__tab.is-on { background: var(--accent); color: #fff; }
+
+.welfare__loading { font-size: 9px; color: var(--fg-3); padding: 8px 2px; }
+
+.welfare__body {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cream-300) transparent;
+}
+.welfare__body::-webkit-scrollbar { width: 4px; }
+.welfare__body::-webkit-scrollbar-thumb { background: var(--cream-300); border-radius: 4px; }
+
+.welfare__chips {
+  display: flex; flex-wrap: wrap; gap: 3px;
+  margin-bottom: 6px;
+  width: 58%;
+}
+.welfare__chip {
+  border: 1px solid var(--border-soft);
+  background: var(--surface-glass);
+  color: var(--fg-1);
+  font-family: inherit;
+  font-size: 8.5px; font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 200ms, transform 120ms var(--ease-soft);
+}
+.welfare__chip:active { transform: scale(0.95); }
+.welfare__chip.is-on { background: var(--accent); color: #fff; border-color: transparent; }
+
+.welfare__cards { display: flex; flex-direction: column; gap: 5px; }
+.welfare-card {
+  background: var(--surface-glass-strong);
+  border-radius: 10px;
+  padding: 7px 9px;
+  box-shadow: var(--shadow-1);
+  width: 95%;
+}
+.welfare-card--accent {
+  background: linear-gradient(150deg, var(--cream-100), var(--caramel-300));
+  box-shadow: var(--shadow-2);
+}
+.welfare-card__tag {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 8px; font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.welfare-card--accent .welfare-card__tag { color: var(--caramel-600, #8a4f28); }
+.welfare-card__tag .material-symbols-rounded { font-size: 11px !important; }
+.welfare-card__name { font-size: 11px; font-weight: 700; color: var(--fg-1); }
+.welfare-card__addr { font-size: 9px; color: var(--fg-2); margin: 1px 0 4px; line-height: 1.3; }
+.welfare-card__tel {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 10px; font-weight: 700;
+  color: #fff; background: var(--accent);
+  padding: 3px 9px; border-radius: 999px;
+  text-decoration: none;
+}
+.welfare-card__tel .material-symbols-rounded { font-size: 12px !important; }
+
+.welfare__helplines {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 3px;
+  width: 95%;
+}
+.welfare__helpline {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--surface-glass);
+  border-radius: 8px;
+  padding: 4px 8px;
+  text-decoration: none;
+  color: var(--fg-1);
+}
+.welfare__helpline .material-symbols-rounded { font-size: 12px !important; color: var(--accent); }
+.welfare__helpline-name { font-size: 8.5px; font-weight: 600; flex: 1; }
+.welfare__helpline-tel { font-size: 9.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+
+.welfare__policies { display: flex; flex-direction: column; gap: 5px; }
+.policy-card {
+  display: flex; gap: 7px;
+  background: var(--surface-glass-strong);
+  border-radius: 10px;
+  padding: 7px 9px;
+  box-shadow: var(--shadow-1);
+  width: 95%;
+}
+.policy-card__icon {
+  flex: 0 0 auto;
+  width: 24px; height: 24px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.policy-card__icon .material-symbols-rounded { font-size: 15px !important; }
+.policy-card__body { min-width: 0; }
+.policy-card__title { font-size: 10.5px; font-weight: 700; color: var(--fg-1); }
+.policy-card__summary { font-size: 9px; color: var(--fg-1); line-height: 1.35; margin: 2px 0 3px; }
+.policy-card__meta { font-size: 8px; color: var(--fg-2); line-height: 1.3; }
+.policy-card__meta b { color: var(--accent); font-weight: 700; margin-right: 3px; }
+.welfare__note {
+  font-size: 8px; color: var(--fg-3); line-height: 1.4;
+  margin-top: 8px; width: 95%;
+}
+
+/* ─────────────────────────────────────────────────────────────
    Mobile: keep the polaroid mockup, scale chassis & content to fit.
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
@@ -862,5 +995,35 @@ html, body {
   .chat__mic .material-symbols-rounded { font-size: 7px !important; }
   .chat__send { width: 11px; height: 11px; }
   .chat__send .material-symbols-rounded { font-size: 7px !important; }
+
+  /* welfare — shrink to fit the L-cutout, keep content left of the notch */
+  .screen--welfare { padding: 3px 4px; }
+  .welfare__tabs { width: 58%; gap: 2px; margin-bottom: 3px; }
+  .welfare__tab { font-size: 5px; padding: 2px 4px; }
+  .welfare__loading { font-size: 5px; padding: 4px 2px; }
+  .welfare__body { padding-right: 2px; }
+  .welfare__chips { width: 58%; gap: 2px; margin-bottom: 3px; }
+  .welfare__chip { font-size: 4.5px; padding: 2px 4px; }
+  .welfare__cards { gap: 3px; }
+  .welfare-card { padding: 3px 5px; border-radius: 5px; width: 95%; }
+  .welfare-card__tag { font-size: 4.5px; gap: 2px; }
+  .welfare-card__tag .material-symbols-rounded { font-size: 6px !important; }
+  .welfare-card__name { font-size: 6px; }
+  .welfare-card__addr { font-size: 4.5px; margin: 1px 0 2px; }
+  .welfare-card__tel { font-size: 5.5px; padding: 2px 5px; gap: 2px; }
+  .welfare-card__tel .material-symbols-rounded { font-size: 7px !important; }
+  .welfare__helplines { margin-top: 4px; gap: 2px; width: 95%; }
+  .welfare__helpline { padding: 2px 4px; gap: 3px; border-radius: 4px; }
+  .welfare__helpline .material-symbols-rounded { font-size: 7px !important; }
+  .welfare__helpline-name { font-size: 4.5px; }
+  .welfare__helpline-tel { font-size: 5px; }
+  .welfare__policies { gap: 3px; }
+  .policy-card { padding: 3px 5px; gap: 4px; border-radius: 5px; width: 95%; }
+  .policy-card__icon { width: 14px; height: 14px; border-radius: 4px; }
+  .policy-card__icon .material-symbols-rounded { font-size: 9px !important; }
+  .policy-card__title { font-size: 5.5px; }
+  .policy-card__summary { font-size: 4.5px; margin: 1px 0 2px; }
+  .policy-card__meta { font-size: 4px; }
+  .welfare__note { font-size: 4px; margin-top: 4px; width: 95%; }
 }
 

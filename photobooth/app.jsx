@@ -21,6 +21,7 @@ function App() {
   else if (screen === "recall")  inner = <RecallScreen go={setScreen} mode={mode} photo={photo} />;
   else if (screen === "saved")   inner = <SavedScreen  go={setScreen} mode={mode} photo={photo} name={t.name} />;
   else if (screen === "chat")    inner = <ChatScreen   go={setScreen} name={t.name} />;
+  else if (screen === "welfare") inner = <WelfareScreen go={setScreen} />;
 
   return (
     <div className="stage">
